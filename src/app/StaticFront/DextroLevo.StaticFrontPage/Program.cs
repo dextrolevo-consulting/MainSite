@@ -17,9 +17,10 @@ builder.Services.AddSingleton<IStaticResourcesInfoProvider>(
            // new PageResource("/blog/articles/posts/1") { OutFile = "blog/post-1.html" },
            // new PageResource("/blog/articles/posts/2") { OutFile = "blog/post-2-dark.html", Query = "?theme=dark" },
             new CssResource("/bootstrap/bootstrap.min.css") { OptimizerType = OptimizerType.None },
-            new CssResource("/site.css"),
-            new JsResource("/site.js"),
-            new BinResource("/favicon.png")
+            new CssResource("/css/site.css"),
+           // new CssResource("/site.css"),
+            new JsResource("/js/site.js"),
+            new BinResource("/favicon.ico")
         ]));
 
 var app = builder.Build();
