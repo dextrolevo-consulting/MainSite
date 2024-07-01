@@ -10,8 +10,7 @@ on:
     branches: [ "main" ]
 
 env:
-  project: ./src/app/BlazorApp/BlazorApp.csproj
-  outputFolder: ./deploy/output
+  project: src/app/BlazorApp/BlazorApp.csproj
 
 jobs:
   build:
@@ -28,13 +27,26 @@ jobs:
 
     - name: GitHub Pages Blazor WASM
       uses: na1307/blazor-github-pages@v2.0 
+      id: prepare
       with:
          project-path: $project
-         publish-path: outputFolder
-    - name: Restore dependencies
-      run: dotnet restore  $project
-    - name: Build
-      run: dotnet build $project --no-restore 
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          path: ${{ steps.prepare.outputs.wwwroot-path }}
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4 
+
+
+
+      
+#    - name: Restore dependencies
+#      run: dotnet restore  $project
+#    - name: Build
+ #     run: dotnet build $project --no-restore 
     #- name: Test
     #  run: dotnet test  $project --no-build --verbosity normal -p $project
       
