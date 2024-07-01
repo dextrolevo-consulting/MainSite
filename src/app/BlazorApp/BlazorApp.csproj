@@ -9,6 +9,8 @@
 
 <PropertyGroup>
   <InvariantGlobalization>true</InvariantGlobalization>
+   <RunAOTCompilation>true</RunAOTCompilation>
+  <WasmStripILAfterAOT>true</WasmStripILAfterAOT>
 </PropertyGroup>
 
 
