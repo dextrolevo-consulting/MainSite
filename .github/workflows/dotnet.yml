@@ -29,7 +29,7 @@ jobs:
       uses: na1307/blazor-github-pages@v2.0 
       id: prepare
       with:
-         project-path: $project
+         project-path: src/app/BlazorApp/BlazorApp.csproj
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
