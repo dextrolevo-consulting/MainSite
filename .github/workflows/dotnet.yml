@@ -24,8 +24,8 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Restore dependencies
-      run: dotnet restore -p $project
+      run: dotnet restore  $project
     - name: Build
-      run: dotnet build --no-restore -p $project
+      run: dotnet build $project --no-restore 
     - name: Test
-      run: dotnet test --no-build --verbosity normal -p $project
+      run: dotnet test  $project --no-build --verbosity normal -p $project
