@@ -24,12 +24,15 @@ jobs:
       with:
         dotnet-version: 8.0.x
         #cache: true
-
+    - name: Install wasm Workloads
+      run: dotnet workload install wasm-tools --ignore-failed-sources
+      
     - name: GitHub Pages Blazor WASM
       uses: na1307/blazor-github-pages@v2.0 
       id: prepare
       with:
          project-path: src/app/BlazorApp/BlazorApp.csproj
+         
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
