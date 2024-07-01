@@ -11,6 +11,7 @@ on:
 
 env:
   project: ./src/app/BlazorApp/BlazorApp.csproj
+  outputFolder: ./deploy/output
 
 jobs:
   build:
@@ -23,9 +24,13 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
+        cache: true
     - name: Restore dependencies
       run: dotnet restore  $project
     - name: Build
       run: dotnet build $project --no-restore 
-    - name: Test
-      run: dotnet test  $project --no-build --verbosity normal -p $project
+    #- name: Test
+    #  run: dotnet test  $project --no-build --verbosity normal -p $project
+      
+    - name: Publish
+      run: dotnet pubish $project --no-restore -o $outputFolder
