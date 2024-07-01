@@ -33,4 +33,4 @@ jobs:
     #  run: dotnet test  $project --no-build --verbosity normal -p $project
       
     - name: Publish
-      run: dotnet pubish $project --no-restore -o $outputFolder
+      run: dotnet pubish $project -o $outputFolder --no-restore 
