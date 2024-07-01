@@ -47,7 +47,14 @@ jobs:
       if: success()
       uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
       with:
-        html_path: ${{ steps.prepare.outputs.wwwroot-path }}/**/*.html
+        html_path: ${{ steps.prepare.outputs.wwwroot-path }}/index.html
+        base_href: '/'
+        
+    - name: Rewrite base href 404
+      if: success()
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: ${{ steps.prepare.outputs.wwwroot-path }}/404.html
         base_href: '/'
         
     - name: Setup Pages
