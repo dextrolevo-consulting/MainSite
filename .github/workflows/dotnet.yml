@@ -1,0 +1,56 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  project: src/app/BlazorApp/BlazorApp.csproj
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+        #cache: true
+
+    - name: GitHub Pages Blazor WASM
+      uses: na1307/blazor-github-pages@v2.0 
+      id: prepare
+      with:
+         project-path: src/app/BlazorApp/BlazorApp.csproj
+    - name: Setup Pages
+      uses: actions/configure-pages@v5
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+          path: ${{ steps.prepare.outputs.wwwroot-path }}
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4 
+
+
+
+      
+#    - name: Restore dependencies
+#      run: dotnet restore  $project
+#    - name: Build
+ #     run: dotnet build $project --no-restore 
+    #- name: Test
+    #  run: dotnet test  $project --no-build --verbosity normal -p $project
+      
+ #   - name: Publish
+ #     run: dotnet pubish $project -o $outputFolder --no-restore 
+
+            
