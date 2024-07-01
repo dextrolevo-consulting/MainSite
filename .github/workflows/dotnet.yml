@@ -25,6 +25,12 @@ jobs:
       with:
         dotnet-version: 8.0.x
         #cache: true
+
+    - name: GitHub Pages Blazor WASM
+      uses: na1307/blazor-github-pages@v2.0 
+      with:
+         project-path: $project
+         publish-path: outputFolder
     - name: Restore dependencies
       run: dotnet restore  $project
     - name: Build
@@ -32,5 +38,7 @@ jobs:
     #- name: Test
     #  run: dotnet test  $project --no-build --verbosity normal -p $project
       
-    - name: Publish
-      run: dotnet pubish $project -o $outputFolder --no-restore 
+ #   - name: Publish
+ #     run: dotnet pubish $project -o $outputFolder --no-restore 
+
+            
