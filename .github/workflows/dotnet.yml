@@ -42,7 +42,14 @@ jobs:
       id: prepare
       with:
          project-path: src/app/BlazorApp/BlazorApp.csproj
-         
+    
+    - name: Rewrite base href
+      if: success()
+      uses: SteveSandersonMS/ghaction-rewrite-base-href@v1
+      with:
+        html_path: ${{ steps.prepare.outputs.wwwroot-path }}/*.html
+        base_href: '/'
+        
     - name: Setup Pages
       uses: actions/configure-pages@v5
     - name: Upload artifact
