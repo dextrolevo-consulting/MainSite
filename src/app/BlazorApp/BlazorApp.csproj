@@ -11,8 +11,8 @@
   <InvariantGlobalization>true</InvariantGlobalization>
   <BlazorEnableTimeZoneSupport>false</BlazorEnableTimeZoneSupport>
   
-  <TrimMode>full</TrimMode>
-  <!-- <RunAOTCompilation>true</RunAOTCompilation>
+   <!--<TrimMode>full</TrimMode>
+  <RunAOTCompilation>true</RunAOTCompilation>
   <WasmStripILAfterAOT>true</WasmStripILAfterAOT> -->
 </PropertyGroup>
 
